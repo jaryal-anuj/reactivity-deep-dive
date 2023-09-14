@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="value"></div>
+    <button>Incremnet</button>
+<script type="module">
+    import { Dep, effect} from './reactivity.js'
+    const dep = new Dep(0);
+    effect(()=>{
+       // dep.track();
+       // console.log('value is '+ dep.value);
+       document.getElementById('value').textContent = dep.value;
+
+    });
+    document.querySelector('button').addEventListener('click',()=>{
+        dep.value++;
+    });
+   // dep.value++;
+    //dep.trigger();
+</script>
+</body>
+</html>
